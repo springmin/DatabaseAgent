@@ -1,4 +1,4 @@
-﻿Extract the table name from this: 
+Extract the table name from this: 
 {{$item}}.
 
 DO NOT RETURN ANY EXPLANATION, JUST RETURN THE TABLE NAME.
