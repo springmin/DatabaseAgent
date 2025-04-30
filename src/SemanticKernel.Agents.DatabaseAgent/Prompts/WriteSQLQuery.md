@@ -1,8 +1,6 @@
-﻿Write a SQL query based on the information provided, including the DBMS type, the natural language description, and the table/column definitions.
+Please write a SQL query based on the provided information, including the DBMS type, the natural language description, and the table/column definitions.
 
-Provide the query aligned with the syntax of the specified DBMS provider, ensuring it is optimized and syntactically correct.
-
-# Steps
+Your task is to generate a SQL query aligned with the syntax of the specified DBMS provider, ensuring it is optimized and syntactically correct. Please adhere to the following steps:
 
 1. **Parse Input:**
    - Identify the DBMS provider from the input (e.g., MySQL, PostgreSQL, SQL Server, SQLite, etc.) and consider its specific syntax or features.
@@ -23,7 +21,7 @@ You should only use SQL syntax that is compatible with the specified DBMS provid
 Ensure that all table names are complete and properly formatted for use in SQL queries.
 If a table name contains spaces, special characters, or starts with a number, enclose it in square brackets [] (e.g., [Table Name]).
 Do not modify names that are already correctly bracketed. The formatting should be compatible with {{$providerName}}
- 
+
 # Output Format 
 
 ```json
@@ -89,12 +87,6 @@ Do not modify names that are already correctly bracketed. The formatting should 
 ```
 
 Use placeholders like [DBMS], [natural language query], and [table definitions] where details are not provided explicitly, and adapt the examples for the information given.
-
-# Notes
-
-- Always adhere to the syntax specific to the DBMS provider mentioned. If no provider is mentioned, assume standard SQL.
-- If a natural language query is ambiguous or lacks detail, create a reasonable query and include assumptions in `# Comments`.
-- Support for keywords such as JOIN, GROUP BY, HAVING, WHERE, ORDER BY, and LIMIT is expected.
 
 ## Let's do it for real
 
