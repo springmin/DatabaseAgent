@@ -26,6 +26,14 @@ namespace SemanticKernel.Agents.DatabaseAgent.MCPServer.Extensions
                 case "AzureOpenAI":
                     var azureConfig = service.Get<AzureOpenAIConfig>();
                     return builder.AddAzureOpenAIChatCompletion(azureConfig.Deployment, azureConfig.Endpoint, azureConfig.APIKey);
+                case "OpenAI":
+                    var openaiConfig = service.Get<AzureOpenAIConfig>();
+                    return builder.AddOpenAIChatCompletion(openaiConfig.Deployment, openaiConfig.Endpoint, openaiConfig.APIKey);
+
+                case "CustOpenAI":
+                    var custConfig = service.Get<AzureOpenAIConfig>();
+                    var handle = new CustHttpClientHandler(service["Type"], custConfig.Endpoint);
+                    return builder.AddOpenAIChatCompletion(custConfig.Deployment, new Uri(custConfig.Endpoint), custConfig.APIKey, httpClient: new HttpClient(handle));
 #pragma warning disable SKEXP0070 // Type is for evaluation purposes only and is subject to change or removal in future updates. Suppress this diagnostic to proceed.
                 case "Ollama":
                     var ollamaConfig = service.Get<OllamaConfig>();
@@ -58,8 +66,15 @@ namespace SemanticKernel.Agents.DatabaseAgent.MCPServer.Extensions
             {
                 case "AzureOpenAI":
                     var azureConfig = service.Get<AzureOpenAIConfig>();
-
                     return builder.AddAzureOpenAITextEmbeddingGeneration(azureConfig.Deployment, azureConfig.Endpoint, azureConfig.APIKey);
+                case "OpenAI":
+                    var openaiConfig = service.Get<AzureOpenAIConfig>();
+                    return builder.AddOpenAITextEmbeddingGeneration(openaiConfig.Deployment, openaiConfig.Endpoint, openaiConfig.APIKey);
+
+                case "CustOpenAI":
+                    var custConfig = service.Get<AzureOpenAIConfig>();
+                    var handle = new CustHttpClientHandler(service["Type"], custConfig.Endpoint);
+                    return builder.AddOpenAITextEmbeddingGeneration(custConfig.Deployment, custConfig.APIKey, httpClient: new HttpClient(handle));
                 case "Ollama":
                     var ollamaConfig = service.Get<OllamaConfig>();
                     return builder.AddOllamaTextEmbeddingGeneration(ollamaConfig.ModelId, new Uri(ollamaConfig.Endpoint), null);

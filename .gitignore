@@ -366,3 +366,4 @@ FodyWeavers.xsd
 appsettings.*.json
 /src/SemanticKernel.Agents.DatabaseAgent.MCPServer/Properties/launchSettings.json
 /src/SemanticKernel.Agents.DatabaseAgent.MCPServer/northwind.db
+*.rar
